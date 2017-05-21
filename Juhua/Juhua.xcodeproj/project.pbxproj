@@ -12,7 +12,7 @@
 		27CCFA941EA8BB2600EE8BFD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27CCFA921EA8BB2600EE8BFD /* Main.storyboard */; };
 		27CCFA961EA8BB2600EE8BFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27CCFA951EA8BB2600EE8BFD /* Assets.xcassets */; };
 		27CCFA991EA8BB2600EE8BFD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27CCFA971EA8BB2600EE8BFD /* LaunchScreen.storyboard */; };
-		27CCFAA11EA9FE1100EE8BFD /* JuhuaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CCFAA01EA9FE1100EE8BFD /* JuhuaView.swift */; };
+		27CCFAA11EA9FE1100EE8BFD /* Juhua.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CCFAA01EA9FE1100EE8BFD /* Juhua.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,7 +23,7 @@
 		27CCFA951EA8BB2600EE8BFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		27CCFA981EA8BB2600EE8BFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		27CCFA9A1EA8BB2600EE8BFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		27CCFAA01EA9FE1100EE8BFD /* JuhuaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JuhuaView.swift; sourceTree = "<group>"; };
+		27CCFAA01EA9FE1100EE8BFD /* Juhua.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Juhua.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,13 +56,13 @@
 		27CCFA8D1EA8BB2600EE8BFD /* Juhua */ = {
 			isa = PBXGroup;
 			children = (
-				27CCFA8E1EA8BB2600EE8BFD /* AppDelegate.swift */,
 				27CCFA901EA8BB2600EE8BFD /* ViewController.swift */,
+				27CCFA8E1EA8BB2600EE8BFD /* AppDelegate.swift */,
+				27CCFAA01EA9FE1100EE8BFD /* Juhua.swift */,
 				27CCFA921EA8BB2600EE8BFD /* Main.storyboard */,
 				27CCFA951EA8BB2600EE8BFD /* Assets.xcassets */,
 				27CCFA971EA8BB2600EE8BFD /* LaunchScreen.storyboard */,
 				27CCFA9A1EA8BB2600EE8BFD /* Info.plist */,
-				27CCFAA01EA9FE1100EE8BFD /* JuhuaView.swift */,
 			);
 			path = Juhua;
 			sourceTree = "<group>";
@@ -140,7 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27CCFAA11EA9FE1100EE8BFD /* JuhuaView.swift in Sources */,
+				27CCFAA11EA9FE1100EE8BFD /* Juhua.swift in Sources */,
 				27CCFA911EA8BB2600EE8BFD /* ViewController.swift in Sources */,
 				27CCFA8F1EA8BB2600EE8BFD /* AppDelegate.swift in Sources */,
 			);
@@ -306,6 +306,7 @@
 				27CCFA9F1EA8BB2600EE8BFD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

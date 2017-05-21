@@ -1,5 +1,5 @@
 //
-//  JuhuaView.swift
+//  Juhua.swift
 //  Juhua
 //
 //  Created by Kyle Sun on 2017/4/21.
@@ -8,25 +8,28 @@
 
 import UIKit
 
-class JuhuaView: UIView {
+class Juhua: UIView {
     
-    let kDotCount: Int = 6
-    let kDotWidth: CGFloat = 10.0
+    let dotCount: Int = 6
+    let dotWidth: CGFloat = 6.0
     
     var dots = [CAShapeLayer]()
-    let contentView = UIView()
+    let contentLayer = CALayer()
     var count = 0
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        addSubview(contentView)
-        for _ in 0 ..< kDotCount {
+        let width = min(frame.size.width, frame.size.height)
+        contentLayer.frame = CGRect(x: 0, y: 0, width: width, height: width)
+        layer.addSublayer(contentLayer)
+        
+        for _ in 0 ..< dotCount {
             let dot = CAShapeLayer()
-            dot.frame = CGRect(x: 0, y: 0, width: kDotWidth, height: kDotWidth)
+            dot.frame = CGRect(x: 0, y: 0, width: dotWidth, height: dotWidth)
             dot.path = UIBezierPath(ovalIn: dot.frame).cgPath
-            dot.fillColor = UIColor.cyan.cgColor
-            contentView.layer.addSublayer(dot)
+            dot.fillColor = UIColor.white.cgColor
+            contentLayer.addSublayer(dot)
             dots.append(dot)
         }
     }
@@ -34,30 +37,26 @@ class JuhuaView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        let width = min(frame.size.width, frame.size.height)
-        contentView.frame = CGRect(x: 0, y: 0, width: width, height: width)
-        startAnimating()
+        
+        
     }
     
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
-        
-        performRotationAnimation()
-        performLoopAnimation()
+        startAnimating()
     }
 
     func startAnimating() {
-        stopAnimating()
-//        performRotationAnimation()
-//        performLoopAnimation()
+        performRotationAnimation()
+        performLoopAnimation()
     }
     
     func stopAnimating() {
         for dot in dots {
             dot.removeAllAnimations()
         }
-        contentView.layer.removeAllAnimations()
         count = 0
+//        contentLayer.removeAllAnimations()
     }
     
     func performRotationAnimation() {
@@ -67,7 +66,7 @@ class JuhuaView: UIView {
         rotation.isCumulative = true
         rotation.repeatCount = HUGE
         rotation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
-        contentView.layer.add(rotation, forKey: nil)
+        contentLayer.add(rotation, forKey: nil)
     }
     
     func performLoopAnimation() {
@@ -78,9 +77,9 @@ class JuhuaView: UIView {
         anim.fillMode = kCAFillModeBoth
         anim.isRemovedOnCompletion = false
         
-        let width = contentView.frame.size.width
+        let width = contentLayer.frame.size.width
         let center = CGPoint(x: width / 2, y: width / 2)
-        let radius = (width - kDotWidth) / 2
+        let radius: CGFloat = 60//(width - dotWidth) / 2
         for i in 0 ..< dots.count {
             let angle = -CGFloat(i) * 0.2
             let path = UIBezierPath(arcCenter: center, radius: radius, startAngle: angle, endAngle: .pi * 2 + angle, clockwise: true)
@@ -91,15 +90,15 @@ class JuhuaView: UIView {
     }
 }
 
-extension JuhuaView: CAAnimationDelegate {
+extension Juhua: CAAnimationDelegate {
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
         if !flag {
             return
         }
         count += 1
-        NSLog("count %d", count)
+        NSLog("anim %@ count %d", anim, count)
         if count % dots.count == 0 {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 self.performLoopAnimation()
             }
         }
